@@ -41,7 +41,8 @@ public class ProducerApplication {
         log.info("Enter your marketing cost: ");
         String marketingCost = sc.nextLine();
 
-        String project = projectService.getProject(projectCode,"RELEASE",saleTeamLead, Integer.parseInt(startingPriceUnit) , Integer.parseInt(marketingCost) );
+        String project = projectService.getProject(projectCode,"RELEASE",saleTeamLead, Integer.parseInt(startingPriceUnit) , Integer.parseInt(marketingCost));
+        log.info("create date %s"+project.toString());
         return args -> {
             template.send("project.release.create-topic", project);
         };
