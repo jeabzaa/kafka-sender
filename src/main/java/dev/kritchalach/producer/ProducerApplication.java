@@ -29,20 +29,23 @@ public class ProducerApplication {
         log.info("Let us know about any of your Project Release the form below.");
         Scanner sc = new Scanner(System.in);
 
-        log.info("Enter your projectCode: ");
+        log.info("ProjectCode: ");
         String projectCode = sc.nextLine();
 
-        log.info("Enter your sale Team Lead: ");
+        log.info("Sale Team Lead: ");
         String saleTeamLead = sc.nextLine();
 
-        log.info("Enter your starting price unit(square metre): ");
+        log.info("Starting price unit(square metre): ");
         String startingPriceUnit = sc.nextLine();
 
-        log.info("Enter your marketing cost: ");
+        log.info("Mrketing cost: ");
         String marketingCost = sc.nextLine();
 
-        String project = projectService.getProject(projectCode,"RELEASE",saleTeamLead, Integer.parseInt(startingPriceUnit) , Integer.parseInt(marketingCost));
-        log.info("create date %s"+project.toString());
+        log.info("releaseDate date: ");
+        String releaseDate = sc.nextLine();
+
+        String project = projectService.getProject(projectCode.trim(),"RELEASE",saleTeamLead.trim(), Integer.parseInt(startingPriceUnit.trim()) , Integer.parseInt(marketingCost.trim()), releaseDate.trim());
+        log.info("Project Release: "+project.toString());
         return args -> {
             template.send("project.release.create-topic", project);
         };

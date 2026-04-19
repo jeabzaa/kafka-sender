@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Service
 public class ProjectService {
     private static final Logger log = LogManager.getLogger(SpringBootApplication.class);
-    public String getProject(String projectCode, String action,String saleTeamLead, Integer startingPriceUnit, Integer marketingCost) throws Exception {
-        Project project = new Project(projectCode, action, saleTeamLead, startingPriceUnit, marketingCost, LocalDate.now().toString(), "CMO");
+    public String getProject(String projectCode, String projectStatus,String saleTeamLead, Integer startingPriceUnit, Integer marketingCost, String releaseDate) throws Exception {
+        Project project = new Project(projectCode, projectStatus, saleTeamLead, startingPriceUnit, marketingCost, LocalDate.now().toString(),releaseDate, "CMO");
         return this.objectToJson(project);
     }
 

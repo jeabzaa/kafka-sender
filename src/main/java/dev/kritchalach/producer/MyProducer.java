@@ -20,7 +20,7 @@ public class MyProducer {
 	public MyProducer(KafkaTemplate<String, String> kafkaTemplate) throws Exception{
 		this.kafkaTemplate = kafkaTemplate;
 		try{
-			String project = projectService.getProject("000","DEFAULT","DEFAULT", 0 , 0 );
+			String project = projectService.getProject("000","DEFAULT","DEFAULT", 0 , 0 , "0000-000-00");
 			this.kafkaTemplate.send("project.release.create-topic", project);
 		}catch (Exception ex){
 			log.info(ex.getMessage());
